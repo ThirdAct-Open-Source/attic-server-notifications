@@ -1,17 +1,9 @@
-import { IApplicationContext, IConfig, IPlugin } from "@znetstar/attic-common/lib/Server";
-import { Client } from '@elastic/elasticsearch';
-export declare type AtticElasticSearchEventsConfig = IConfig & {
-    eventsElasticSearchUri?: string;
-    sendEventsToElasticSearch?: string[];
-    eventsIndexPrefix?: string;
-};
-export declare class AtticServerElasticSearchEvents implements IPlugin {
-    applicationContext: IApplicationContext;
-    eventsIndexPrefix: string;
-    client: Client;
-    constructor(applicationContext: IApplicationContext, eventsIndexPrefix?: string);
-    get config(): AtticElasticSearchEventsConfig;
+import { IPlugin } from "@znetstar/attic-common/lib/Server";
+import { AtticServerNotificationsApplicationContext } from "./common";
+export declare class AtticServerNotifications implements IPlugin {
+    applicationContext: AtticServerNotificationsApplicationContext;
+    constructor(applicationContext: AtticServerNotificationsApplicationContext);
     init(): Promise<void>;
     get name(): string;
 }
-export default AtticServerElasticSearchEvents;
+export default AtticServerNotifications;
